@@ -28,6 +28,7 @@ writeln ('6.Koniec programu');
 GotoXy (4,9);
 Write ('Vyber si ktory program chces zapnut cislom:');
 cislo_program:=Readkey;
+
 if cislo_program='1' then
 begin
 clrscr;
@@ -36,17 +37,20 @@ writeln ('Zadaj pocet cisel z ktorych chces minimum');
 readln (x);
 minimum:=10000;
 y:=0;
-repeat
+while y<x do
+begin
   writeln ('Zadaj hodnotu cisla');
   readln (z);
 if z<minimum then minimum:=z;
 y:=y+1;
-until y=x;
+end;
 writeln ('Minimum je ',minimum,'');
+
 write ('Stlac ENTER pre vratenie sa do menu');
 Readkey;
 Goto 1;
 end;
+
 if cislo_program='2' then
 begin
 Clrscr;
@@ -63,27 +67,32 @@ if z>maximum then maximum:=z;
 y:=y+1;
 end;
 writeln ('Maximum je ',maximum,'');
+
 write ('Stlac ENTER pre vratenie sa do menu');
 Readkey;
 Goto 1;
 end;
+
 if cislo_program='3' then
 begin
 Clrscr;
 textcolor (yellow);
 randomize;
 x:=random (20);
-repeat
+while y<>x do
+begin
 writeln ('Zadaj cislo');
 readln (y);
 if y>x then writeln ('Menej');
 if y<x then writeln ('Viac');
-until y=x;
+end;
 writeln ('Uhadol si cislo');
+
 write ('Stlac ENTER pre vratenie sa do menu');
 Readkey;
 Goto 1;
 end;
+
 if cislo_program='4' then
 begin
 Clrscr;
@@ -103,10 +112,12 @@ end;
 y:=sucet-stav_uctu;
 writeln ('Nemas dost penazi na ucte');
 if y>0 then writeln ('Musis v obchode vratit veci v hodnote ',y,'eur');
+
 write ('Stlac ENTER pre vratenie sa do menu');
 Readkey;
 Goto 1;
 end;
+
 if cislo_program='5' then
 begin
 clrscr;
@@ -123,10 +134,12 @@ sucet:=0;
  y:=sucet-x;
  writeln ('Vytah je pretazeny o ',y,'kg');
  if y>0 then writeln ('Vyberte z vytahu baliky s hmotnostou aspon ',y,'kg');
+ 
  write ('Stlac ENTER pre vratenie sa do menu');
  Readkey;
 Goto 1;
 end;
+
 if cislo_program='6' then
 begin
 Clrscr;
@@ -135,6 +148,7 @@ write ('Chces vypnut program ? (a/n)');
 yn:=Readkey;
 if yn= 'a' then Halt;
 if yn= 'n' then Goto 1;
+
 end;
 readln;
 end.
