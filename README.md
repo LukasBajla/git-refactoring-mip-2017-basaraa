@@ -1,1 +1,1 @@
-zatiaľ len skúška nech zistím ako to funguje netuším čo z toho bude potom
+#Celá úprava kódu bola vykonaná v tejto vetve
