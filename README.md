@@ -1,1 +1,1 @@
-
+# Pôvodný kód programu
