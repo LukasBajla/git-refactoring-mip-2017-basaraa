@@ -65,7 +65,7 @@ end;
 writeln ('Maximum je ',max,'');
 write ('Stlac ENTER pre vratenie sa do menu');
 Readkey;
-Goto 1;
+Goto 1; 
 end;
 if m='3' then
 begin
