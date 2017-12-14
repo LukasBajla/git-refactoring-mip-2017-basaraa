@@ -2,8 +2,9 @@ program menu;
 Uses crt;
 Label 1;
 var cislo_program:string;
-    yn:char;
-    x,y,z,minimum,maximum,stav_uctu,sucet,hmotnost_baliku:integer;
+    koniec_programu:char;
+    pocet_cisel,x,nahodne_cislo,cislo,minimum,maximum,stav_uctu,sucet,hmotnost_baliku,platba_v_obchode,nedostatok
+    ,nosnost_vytahu,pretazenie:integer;
 
 begin
 1:Clrscr;
@@ -34,15 +35,15 @@ begin
 clrscr;
 textcolor (lightred);
 writeln ('Zadaj pocet cisel z ktorych chces minimum');
-readln (x);
+readln (pocet_cisel);
 minimum:=10000;
-y:=0;
-while y<x do
+x:=0;
+while x<pocet_cisel do
 begin
   writeln ('Zadaj hodnotu cisla');
-  readln (z);
-if z<minimum then minimum:=z;
-y:=y+1;
+  readln (cislo);
+if cislo<minimum then minimum:=cislo;
+x:=x+1;
 end;
 writeln ('Minimum je ',minimum,'');
 end;
@@ -52,15 +53,15 @@ begin
 Clrscr;
 textcolor (green);
 writeln ('Zadaj pocet cisel z ktorych chces vediet maximum');
-readln (x);
+readln (pocet_cisel);
 maximum:=0;
-y:=0;
-while y<x do
+x:=0;
+while x<pocet_cisel do
 begin
 writeln ('Zadaj hodnotu cisla');
-  readln (z);
-if z>maximum then maximum:=z;
-y:=y+1;
+  readln (cislo);
+if cislo>maximum then maximum:=cislo;
+x:=x+1;
 end;
 writeln ('Maximum je ',maximum,'');
 end;
@@ -70,13 +71,13 @@ begin
 Clrscr;
 textcolor (yellow);
 randomize;
-x:=random (20);
-while y<>x do
+nahodne_cislo:=random (20);
+while cislo<>nahodne_cislo do
 begin
 writeln ('Zadaj cislo');
-readln (y);
-if y>x then writeln ('Menej');
-if y<x then writeln ('Viac');
+readln (cislo);
+if cislo>nahodne_cislo then writeln ('Menej');
+if cislo<nahodne_cislo then writeln ('Viac');
 end;
 writeln ('Uhadol si cislo');
 end;
@@ -91,15 +92,15 @@ sucet:=0;
 while sucet<stav_uctu do
 begin
 writeln ('Kolko platis v obchode ?');
-readln (x);
-sucet:=sucet+x;
+readln (platba_v_obchode);
+sucet:=sucet+platba_v_obchode;
 write ( );
 if sucet<stav_uctu then
 writeln ('Na ucte mas ',(stav_uctu-sucet),'eur');
 end;
-y:=sucet-stav_uctu;
+nedostatok:=sucet-stav_uctu;
 writeln ('Nemas dost penazi na ucte');
-if y>0 then writeln ('Musis v obchode vratit veci v hodnote ',y,'eur');
+if nedostatok>0 then writeln ('Musis v obchode vratit veci v hodnote ',nedostatok,'eur');
 end;
 
 if cislo_program='5' then
@@ -107,17 +108,17 @@ begin
 clrscr;
 textcolor (lightgreen);
 writeln ('Zadaj nosnost vytahu');
-readln (x);
+readln (nosnost_vytahu);
 sucet:=0;
- while sucet<x do
+ while sucet<nosnost_vytahu do
   begin
-  writeln ('Zadaj hmotnost baliku (kilogramy)');
+  writeln ('Zadaj hmotnost baliku (v kg)');
   read (hmotnost_baliku);
   sucet:=sucet+hmotnost_baliku;
   end;
- y:=sucet-x;
- writeln ('Vytah je pretazeny o ',y,'kg');
- if y>0 then writeln ('Vyberte z vytahu baliky s hmotnostou aspon ',y,'kg');
+ pretazenie:=sucet-nosnost_vytahu;
+ writeln ('Vytah je pretazeny o ',pretazenie,'kg');
+ if pretazenie>0 then writeln ('Vyberte z vytahu baliky s hmotnostou aspon ',pretazenie,'kg');
 end;
 
 if cislo_program='6' then
@@ -125,13 +126,14 @@ begin
 Clrscr;
 textcolor (white);
 write ('Chces vypnut program ? (a/n)');
-yn:=Readkey;
-if yn= 'a' then Halt;
-if yn= 'n' then Goto 1;
+koniec_programu:=Readkey;
+if koniec_programu= 'a' then Halt;
+if koniec_programu= 'n' then Goto 1;
+end;
 
  write ('Stlac ENTER pre vratenie sa do menu');
  Readkey;
 Goto 1;
-end;
+
 readln;
 end.
